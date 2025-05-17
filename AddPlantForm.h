@@ -19,30 +19,52 @@ namespace CalendarApp {
         AddPlantForm(NativeCalendar* calendar) {
             nativeCalendar = calendar;
             InitializeComponent();
+            this->CenterToScreen();
         }
 
         void InitializeComponent() {
+            // Настройки главного окна
             this->Text = L"Добавить растение";
-            this->Size = Drawing::Size(300, 200);
+            this->Size = System::Drawing::Size(350, 220);
+            this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+            this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+            this->MaximizeBox = false;
+            this->MinimizeBox = false;
 
-            plantCombo = gcnew ComboBox();
-            plantCombo->Location = Point(20, 20);
-            plantCombo->Width = 200;
-            for (const auto& plant : nativeCalendar->plantDB.getAvailablePlants()) {
-                plantCombo->Items->Add(gcnew String(plant.first.c_str()));
-            }
+            // ComboBox для выбора растения
+            plantCombo = gcnew System::Windows::Forms::ComboBox();
+            plantCombo->Location = System::Drawing::Point(20, 20);
+            plantCombo->Size = System::Drawing::Size(300, 25);
+            plantCombo->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
             this->Controls->Add(plantCombo);
 
-            datePicker = gcnew DateTimePicker();
-            datePicker->Location = Point(20, 60);
-            datePicker->Value = DateTime::Now;
+            // DateTimePicker для выбора даты
+            datePicker = gcnew System::Windows::Forms::DateTimePicker();
+            datePicker->Location = System::Drawing::Point(20, 70);
+            datePicker->Size = System::Drawing::Size(300, 25);
+            datePicker->Format = System::Windows::Forms::DateTimePickerFormat::Short;
             this->Controls->Add(datePicker);
 
-            okButton = gcnew Button();
+            // Кнопка "Добавить"
+            okButton = gcnew System::Windows::Forms::Button();
             okButton->Text = L"Добавить";
-            okButton->Location = Point(20, 100);
-            okButton->Click += gcnew EventHandler(this, &AddPlantForm::OnOKClick);
+            okButton->Size = System::Drawing::Size(120, 40);
+            okButton->Location = System::Drawing::Point(
+                (this->Width - okButton->Width) / 2,
+                120
+            );
+            okButton->Font = gcnew System::Drawing::Font(L"Arial", 10, System::Drawing::FontStyle::Bold);
+            okButton->Click += gcnew System::EventHandler(this, &AddPlantForm::OnOKClick);
             this->Controls->Add(okButton);
+
+            // Заполнение списка растений
+            for (const auto& plant : nativeCalendar->plantDB.getAvailablePlants()) {
+                plantCombo->Items->Add(gcnew System::String(plant.first.c_str()));
+            }
+
+            if (plantCombo->Items->Count > 0) {
+                plantCombo->SelectedIndex = 0;
+            }
         }
 
         void OnOKClick(Object^ sender, EventArgs^ e) {

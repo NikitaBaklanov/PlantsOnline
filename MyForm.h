@@ -11,6 +11,8 @@ namespace CalendarApp {
     public ref class MainForm : public Form {
     private:
         Panel^ sfmlPanel;
+        Panel^ leftPanel;
+        Panel^ rightPanel;
         Label^ monthLabel;
         Button^ prevButton;
         Button^ nextButton;
@@ -21,31 +23,38 @@ namespace CalendarApp {
         NativeCalendar* nativeCalendar;
 
         void InitializeComponent() {
+
+            this->Resize += gcnew EventHandler(this, &MainForm::OnResize);
+            this->MinimumSize = System::Drawing::Size(800, 600);
+
             this->Text = L"Трекер полива растений";
-            this->Size = Drawing::Size(1200, 600);
+            this->Size = Drawing::Size(1200, 750);
             this->StartPosition = FormStartPosition::CenterScreen;
 
-            Panel^ leftPanel = gcnew Panel();
+            // Левая панель
+            leftPanel = gcnew Panel();
             leftPanel->Dock = DockStyle::Left;
             leftPanel->Width = 200;
-            leftPanel->BackColor = Color::FromArgb(220, 220, 220);
+            leftPanel->BackColor = Color::FromArgb(240, 240, 240);
             this->Controls->Add(leftPanel);
 
+            // Элементы левой панели
             monthLabel = gcnew Label();
             monthLabel->Text = L"Май 2025";
             monthLabel->Location = Point(20, 20);
+            monthLabel->Size = Drawing::Size(180, 30);
             monthLabel->Font = gcnew Drawing::Font(L"Arial", 12, FontStyle::Bold);
             leftPanel->Controls->Add(monthLabel);
 
             prevButton = gcnew Button();
-            prevButton->Text = L"< Предыдущий";
+            prevButton->Text = L"< Предыдущий месяц";
             prevButton->Location = Point(20, 60);
             prevButton->Size = Drawing::Size(160, 30);
             prevButton->Click += gcnew EventHandler(this, &MainForm::OnPrevClick);
             leftPanel->Controls->Add(prevButton);
 
             nextButton = gcnew Button();
-            nextButton->Text = L"Следующий >";
+            nextButton->Text = L"Следующий месяц >";
             nextButton->Location = Point(20, 100);
             nextButton->Size = Drawing::Size(160, 30);
             nextButton->Click += gcnew EventHandler(this, &MainForm::OnNextClick);
@@ -53,20 +62,21 @@ namespace CalendarApp {
 
             Label^ listLabel = gcnew Label();
             listLabel->Text = L"Список растений";
-            listLabel->Location = Point(20, 150);
-            listLabel->Font = gcnew Drawing::Font(L"Arial", 10, FontStyle::Bold);
+            listLabel->Location = Point(20, 140);
+            listLabel->Font = gcnew Drawing::Font(L"Arial", 12, FontStyle::Bold);
             leftPanel->Controls->Add(listLabel);
 
             plantsList = gcnew ListBox();
             plantsList->Location = Point(20, 180);
-            plantsList->Size = Drawing::Size(160, 300);
+            plantsList->Size = Drawing::Size(160, 500);
             plantsList->SelectedIndexChanged += gcnew EventHandler(this, &MainForm::OnPlantSelected);
             leftPanel->Controls->Add(plantsList);
 
-            Panel^ rightPanel = gcnew Panel();
+            // Правая панель
+            rightPanel = gcnew Panel();
             rightPanel->Dock = DockStyle::Right;
             rightPanel->Width = 200;
-            rightPanel->BackColor = Color::FromArgb(220, 220, 220);
+            rightPanel->BackColor = Color::FromArgb(240, 240, 240);
             this->Controls->Add(rightPanel);
 
             addButton = gcnew Button();
@@ -92,6 +102,7 @@ namespace CalendarApp {
             settingsButton->BackColor = Color::FromArgb(173, 216, 230);
             rightPanel->Controls->Add(settingsButton);
 
+            // Основная панель для SFML
             sfmlPanel = gcnew Panel();
             sfmlPanel->Dock = DockStyle::Fill;
             this->Controls->Add(sfmlPanel);
@@ -99,16 +110,59 @@ namespace CalendarApp {
 
         void InitializeSFML() {
             try {
+                // Создаем экземпляр календаря
                 nativeCalendar = new NativeCalendar();
+
+                // Инициализируем SFML окно
                 nativeCalendar->Initialize(sfmlPanel->Handle.ToPointer());
 
+                // Устанавливаем текущие размеры панелей
+                nativeCalendar->SetPanelWidths(
+                    leftPanel->Width,
+                    rightPanel->Width
+                );
+
+                // Рассчитываем масштаб DPI
+                float dpiScaleX = this->DeviceDpi / 96.0f;
+                float dpiScaleY = this->DeviceDpi / 96.0f;
+
+                // Устанавливаем начальный размер с учетом DPI
+                nativeCalendar->Resize(
+                    static_cast<unsigned>(sfmlPanel->Width * dpiScaleX),
+                    static_cast<unsigned>(sfmlPanel->Height * dpiScaleY)
+                );
+
+                // Инициализируем таймер для плавной отрисовки
                 Timer^ timer = gcnew Timer();
-                timer->Interval = 16;
+                timer->Interval = 16; // ~60 FPS
                 timer->Tick += gcnew EventHandler(this, &MainForm::OnTimerTick);
                 timer->Start();
+
+                // Обновляем метку с месяцем
+                UpdateMonthLabel();
+
+                // Обновляем список растений
+                UpdatePlantList();
             }
             catch (const std::exception& e) {
-                MessageBox::Show(gcnew String(e.what()), L"Ошибка SFML");
+                // Обработка ошибок инициализации
+                String^ errorMsg = gcnew String(("Ошибка инициализации SFML: " + std::string(e.what())).c_str());
+                MessageBox::Show(errorMsg, L"Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+                // Пытаемся безопасно завершить работу
+                if (nativeCalendar != nullptr) {
+                    delete nativeCalendar;
+                    nativeCalendar = nullptr;
+                }
+            }
+        }
+
+        void OnResize(Object^ sender, EventArgs^ e) {
+            if (nativeCalendar != nullptr && sfmlPanel != nullptr) {
+                nativeCalendar->Resize(
+                    static_cast<unsigned>(sfmlPanel->Width),
+                    static_cast<unsigned>(sfmlPanel->Height)
+                );
             }
         }
 
@@ -118,10 +172,12 @@ namespace CalendarApp {
 
         void OnPrevClick(Object^ sender, EventArgs^ e) {
             nativeCalendar->PrevMonth();
+            UpdateMonthLabel();
         }
 
         void OnNextClick(Object^ sender, EventArgs^ e) {
             nativeCalendar->NextMonth();
+            UpdateMonthLabel();
         }
 
         void OnAddClick(Object^ sender, EventArgs^ e) {
@@ -139,15 +195,27 @@ namespace CalendarApp {
         }
 
         void OnPlantSelected(Object^ sender, EventArgs^ e) {
-            nativeCalendar->plantDB.selectedIndex = plantsList->SelectedIndex;
-            nativeCalendar->Render();
+            nativeCalendar->SetSelectedPlantIndex(plantsList->SelectedIndex);
         }
 
         void UpdatePlantList() {
             plantsList->Items->Clear();
             for (const auto& plant : nativeCalendar->plantDB.getUserPlants()) {
-                plantsList->Items->Add(gcnew String(plant.name.c_str()));
+                // Форматируем дату в виде "дд.мм.гг"
+                std::string dateStr =
+                    (plant.plantingDate.day < 10 ? "0" : "") + std::to_string(plant.plantingDate.day) + "." +
+                    (plant.plantingDate.month < 10 ? "0" : "") + std::to_string(plant.plantingDate.month) + "." +
+                    std::to_string(plant.plantingDate.year % 100); // Берем последние две цифры года
+
+                // Объединяем название растения и дату
+                std::string plantInfo = plant.name + " (" + dateStr + ")";
+                plantsList->Items->Add(gcnew String(plantInfo.c_str()));
             }
+        }
+
+        void UpdateMonthLabel() {
+            std::string monthName = nativeCalendar->GetMonthName(nativeCalendar->displayedMonth.month);
+            monthLabel->Text = gcnew String((monthName + " " + std::to_string(nativeCalendar->displayedMonth.year)).c_str());
         }
 
     public:
@@ -157,14 +225,7 @@ namespace CalendarApp {
         }
 
         ~MainForm() {
-            this->!MainForm();
-        }
-
-        !MainForm() {
-            if (nativeCalendar) {
-                delete nativeCalendar;
-                nativeCalendar = nullptr;
-            }
+            delete nativeCalendar;
         }
     };
 }

@@ -43,6 +43,8 @@ public:
     std::map<std::string, int> plantsData;
     std::vector<Plant> userPlants;
 
+    void NormalizeDate(Date& date) const;
+
     PlantDatabase();
     const std::map<std::string, int>& getAvailablePlants() const;
     const std::vector<Plant>& getUserPlants() const;
@@ -60,18 +62,46 @@ public:
 
     void Initialize(void* windowHandle);
     void Render();
-    void Resize(unsigned width, unsigned height);
+    void Resize(unsigned width, unsigned height) {
+        if (sfmlWindow) {
+            sfmlWindow->setSize(sf::Vector2u(width, height));
+            sfmlWindow->setView(sf::View(sf::FloatRect(0, 0, width, height)));
+            Render(); // ƒобавл€ем перерисовку после изменени€ размера
+        }
+    }
+
+    void SetPanelWidths(int left, int right) {
+        leftPanelWidth = static_cast<float>(left);
+        rightPanelWidth = static_cast<float>(right);
+    }
+
     void NextMonth();
     void PrevMonth();
 
     PlantDatabase plantDB;
     Date currentDate;
     Date displayedMonth;
-    //int GetDaysInMonth(int month, int year) const;
-private:
-    void DrawCalendar();
+
+    int GetSelectedPlantIndex() const;
     std::string GetMonthName(int month) const;
 
+    void SetSelectedPlantIndex(int index) {
+        if (index >= -1 && index < plantDB.getUserPlants().size()) {
+            selectedPlantIndex = index;
+        }
+    }
+private:
+    void DrawCalendar();
+
+    int selectedPlantIndex = -1;
+
+    float leftPanelWidth = 250.0f;  // ƒобавл€ем пол€ дл€ хранени€ ширины
+    float rightPanelWidth = 250.0f;
+
+    sf::Texture waterDropTexture;
     sf::RenderWindow* sfmlWindow;
     sf::Font font;
+
+
+
 };

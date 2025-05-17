@@ -1,1 +1,34 @@
-﻿  PlantsOnline.vcxproj -> C:\Users\ZEFS\Desktop\PlantsOnline\x64\Debug\PlantsOnline.exe
+﻿  MyForm.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         ]
+  (компиляция исходного файла "MyForm.cpp")
+  
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         ]
+  (компиляция исходного файла "MyForm.cpp")
+  
+  NativeCalendar.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,69): warning C4244:         ]
+  (компиляция исходного файла "NativeCalendar.cpp")
+  
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.h(68,62): warning C4244:         ]
+  (компиляция исходного файла "NativeCalendar.cpp")
+  
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Создание кода...
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  PlantsOnline.vcxproj -> C:\Users\ZEFS\Desktop\PlantsOnline\x64\Debug\PlantsOnline.exe
