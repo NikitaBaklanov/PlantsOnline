@@ -1,0 +1,40 @@
+﻿  MyForm.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28): warning C4947: System::Windows::Forms::Control::Scale: помечен как устаревший
+  (компиляция исходного файла "MyForm.cpp")
+      C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28):
+      Сообщение: "This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202"
+  
+  NativeCalendar.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28): warning C4947: System::Windows::Forms::Control::Scale: помечен как устаревший
+  (компиляция исходного файла "NativeCalendar.cpp")
+      C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28):
+      Сообщение: "This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202"
+  
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(21,31): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         ]
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         ]
+  SettingsForm.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28): warning C4947: System::Windows::Forms::Control::Scale: помечен как устаревший
+  (компиляция исходного файла "SettingsForm.cpp")
+      C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28):
+      Сообщение: "This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202"
+  
+  WeatherEditorForm.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28): warning C4947: System::Windows::Forms::Control::Scale: помечен как устаревший
+  (компиляция исходного файла "WeatherEditorForm.cpp")
+      C:\Users\ZEFS\Desktop\PlantsOnline\WeatherEditorForm.h(31,28):
+      Сообщение: "This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202"
+  
+  Создание кода...
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  PlantsOnline.vcxproj -> C:\Users\ZEFS\Desktop\PlantsOnline\x64\Release\PlantsOnline.exe
+  "pwsh.exe" не является внутренней или внешней
+  командой, исполняемой программой или пакетным файлом.

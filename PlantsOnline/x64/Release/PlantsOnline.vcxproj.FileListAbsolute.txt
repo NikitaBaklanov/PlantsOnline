@@ -1,0 +1,9 @@
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.vcxproj.AssemblyReference.cache
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.MyForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.vcxproj.GenerateResource.cache
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.AddPlantForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\x64\Release\libcurl.dll
+C:\Users\ZEFS\Desktop\PlantsOnline\x64\Release\zlib1.dll
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOn.61A17F6C.Up2Date
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.SettingsForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Release\PlantsOnline.WeatherEditorForm.resources

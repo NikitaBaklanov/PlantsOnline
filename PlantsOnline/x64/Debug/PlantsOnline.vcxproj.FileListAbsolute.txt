@@ -1,0 +1,6 @@
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.vcxproj.AssemblyReference.cache
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.MyForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.vcxproj.GenerateResource.cache
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.AddPlantForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.SettingsForm.resources
+C:\Users\ZEFS\Desktop\PlantsOnline\PlantsOnline\x64\Debug\PlantsOnline.WeatherEditorForm.resources

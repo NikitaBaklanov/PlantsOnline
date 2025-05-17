@@ -1,0 +1,19 @@
+﻿  MyForm.cpp
+  NativeCalendar.cpp
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(21,31): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,65): warning C4244:         ]
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         with
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         [
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:             T=float
+C:\Users\ZEFS\Desktop\PlantsOnline\NativeCalendar.cpp(359,58): warning C4244:         ]
+  SettingsForm.cpp
+  Создание кода...
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  PlantsOnline.vcxproj -> C:\Users\ZEFS\Desktop\PlantsOnline\x64\Debug\PlantsOnline.exe
+  "pwsh.exe" не является внутренней или внешней
+  командой, исполняемой программой или пакетным файлом.
